@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <h1>Entre para visualizar o conteúdo</h1>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Acessar">
+    </form>
+{% endblock conteudo %}

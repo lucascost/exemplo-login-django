@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo login</title>
+</head>
+<body>
+    {% block conteudo %}
+    {% endblock conteudo %}
+    <hr>
+    <ul>
+        <li><a href="{% url 'home' %}">Início</a></li>
+        <li><a href="{% url 'user-page' %}">Página do usuário</a></li>
+        <li><a href="{% url 'adm-page' %}">Página do admin</a></li>
+    </ul>
+    
+    {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Encerrar sessão">
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Entrar</a><br>
+        <a href="{% url 'signup' %}">Cadastrar</a>
+    {% endif %}
+    
+</body>
+</html>
